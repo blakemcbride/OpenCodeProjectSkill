@@ -16,6 +16,11 @@ their documentation. It is public on GitHub.
   `skill` tool; the steps live in the skill, so keep the pair in step.
 - `ProjectSkills.md` — full documentation of every skill and step.
 - `README.md` — public introduction, install, use, update and remove steps.
+- `install.sh` (Linux, macOS) and `install.ps1` (Windows) — install, update
+  or remove the skills and commands by copying or linking `skills/*` and
+  `commands/*`. They take the names from those directories, so a new skill or
+  command needs no change to them. Keep the two scripts in step with each
+  other and with `README.md`.
 - `PROJECTS.md` and `Projects/` — this repository's own saved state, written
   by the skills themselves. Use `/resume-project` and `/save-project` here as
   in any other project.
@@ -34,14 +39,16 @@ their documentation. It is public on GitHub.
   project saved under one harness is resumed under the other. Keep it that
   way.
 - **Sync every Claude Code change.** When the Claude Code version
-  (`blakemcbride/ClaudeCodeProjectSkill`) gains a skill or changes one, port
-  it here in the same task: update the skill and its command, add the
-  command for a new skill, update `ProjectSkills.md` and `README.md`, link
-  any new skill and command into `~/.config/opencode/`, and say what was
-  ported and what is left. Keep the harness substitutions: `AGENTS.md` for
-  `MEMORY.md`, the OpenCode install paths, `/new` and `opencode` for a fresh
-  session, the `edit` tool, and the README's opening about OpenCode's
-  sessions. Port behavior and wording; do not copy Claude-specific details.
+  (`blakemcbride/ClaudeCodeProjectSkill`) gains a skill, changes one, or adds
+  a repository file such as an install script, port it here in the same task:
+  update the skill and its command, add the command for a new skill, update
+  `ProjectSkills.md` and `README.md`, link any new skill and command into
+  `~/.config/opencode/`, port repository files such as `install.sh` and
+  `install.ps1`, and say what was ported and what is left. Keep the harness
+  substitutions: `AGENTS.md` for `MEMORY.md`, the OpenCode install paths,
+  `/new` and `opencode` for a fresh session, the `edit` tool, and the
+  README's opening about OpenCode's sessions. Port behavior and wording; do
+  not copy Claude-specific details.
 - **Public wording.** The skills, `ProjectSkills.md` and `README.md` say "the
   user", never a person's name. They hold no home directory path and nothing
   specific to one project.

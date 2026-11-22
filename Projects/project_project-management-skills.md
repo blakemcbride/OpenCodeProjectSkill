@@ -16,6 +16,8 @@ on them.
   - `commands/<name>.md` — one command per skill, for `/name`.
   - `ProjectSkills.md` — full documentation of every step.
   - `README.md` — public introduction, install, use, update, remove.
+  - `install.sh` (Linux, macOS) and `install.ps1` (Windows) — install,
+    update or remove the skills and commands by copying or linking them.
   - `AGENTS.md` — the rules for working in this repository.
   - `PROJECTS.md` and `Projects/` — this project's own saved state.
 - On the owner's machine `~/.config/opencode/skills/<name>` for each skill and
@@ -61,6 +63,11 @@ on them.
 - Archived projects keep their entry, word for word, inside the note under
   `## Archived PROJECTS.md entry`, so the state stays in the same place and
   format the Claude Code version reads and writes.
+- The install scripts added to the Claude Code version were ported on
+  2026-11-22. Unlike the Claude Code scripts, which install skills only,
+  these also install and remove the matching commands: OpenCode runs a
+  `/name` as a command that loads its skill. Both scripts take the names from
+  `skills/` and `commands/`, so a new skill needs no change to them.
 
 ## Decisions the owner made, and why
 
@@ -121,8 +128,9 @@ on them.
   `PROJECTS.md` and `Projects/` are the same files either harness uses, so the
   two versions stay interchangeable on one project.
 - **The OpenCode version tracks the Claude Code version.** Every enhancement
-  or addition to the Claude Code skills is ported here in the same task, so
-  the two stay equivalent apart from harness wording and install paths.
+  or addition to the Claude Code system, whether a skill or a repository
+  file, is ported here in the same task, so the two stay equivalent apart
+  from harness wording and install paths.
 - **This project's own record lives here**, not in another project, because
   the skills are not specific to any one project. It is written for a public
   repository: no person's name, no home directory path, no other project's
@@ -161,3 +169,8 @@ on them.
   `PROJECTS.md` and `Projects/` deliberately.
 - Saving this record changes tracked files, so the repository shows
   uncommitted changes after every save until the owner asks for a commit.
+- `install.sh` has been run in copy, link and uninstall modes, both for a
+  temporary project and for a temporary global config directory, including
+  `XDG_CONFIG_HOME`. `install.ps1` has not been run on Windows; its command
+  links are symbolic links, which may need Developer Mode or an elevated
+  shell, while its skill links are junctions and need no special rights.

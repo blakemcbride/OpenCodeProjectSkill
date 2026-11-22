@@ -107,30 +107,43 @@ git clone https://github.com/blakemcbride/OpenCodeProjectSkill.git
 cd OpenCodeProjectSkill
 ```
 
-Then put the twelve skill directories and the twelve commands where OpenCode
-looks for them.
+Then run the install script from the cloned directory.
 
-For every project on your machine:
-
-```
-mkdir -p ~/.config/opencode/skills ~/.config/opencode/commands
-cp -r skills/* ~/.config/opencode/skills/
-cp -r commands/* ~/.config/opencode/commands/
-```
-
-For one project only, run this from the cloned directory:
+On Linux or macOS:
 
 ```
-mkdir -p /path/to/your/project/.opencode/skills /path/to/your/project/.opencode/commands
-cp -r skills/* /path/to/your/project/.opencode/skills/
-cp -r commands/* /path/to/your/project/.opencode/commands/
+./install.sh
 ```
+
+On Windows:
+
+```
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+This copies the twelve skill directories and twelve commands to OpenCode's
+config directory: `~/.config/opencode`, or `$XDG_CONFIG_HOME/opencode` when
+that is set (`%USERPROFILE%\.config\opencode` on Windows). OpenCode looks
+there for them, so they work in every project on your machine. If
+`OPENCODE_CONFIG_DIR` is set, the script uses it instead.
+
+For one project only, name the project:
+
+```
+./install.sh --project /path/to/your/project
+```
+
+```
+powershell -ExecutionPolicy Bypass -File install.ps1 -Project C:\path\to\your\project
+```
+
+That installs into the project's own `.opencode`.
 
 Start OpenCode. Type `/` to list the commands, and `/list-projects` is a
 harmless first test: in a project with no `PROJECTS.md` it says so and stops.
 
-Install all twelve skills and all twelve commands. They refer to each other
-by name.
+The script installs all twelve skills and all twelve commands. They refer to
+each other by name.
 
 ### Installing with links instead of copies
 
@@ -138,12 +151,27 @@ If you would rather have the installed skills and commands follow the cloned
 repository, link them instead of copying them:
 
 ```
-mkdir -p ~/.config/opencode/skills ~/.config/opencode/commands
-for s in skills/*; do ln -s "$PWD/$s" ~/.config/opencode/skills/; done
-for c in commands/*; do ln -s "$PWD/$c" ~/.config/opencode/commands/; done
+./install.sh --link
 ```
 
-A `git pull` then updates the installed skills as well.
+```
+powershell -ExecutionPolicy Bypass -File install.ps1 -Link
+```
+
+A `git pull` then updates the installed skills and commands as well. On
+Windows the skill links are directory junctions, which need no special
+rights; the command links are symbolic links, which may need Developer Mode
+or an elevated shell.
+
+### Installing by hand
+
+The scripts only copy or link directories and files. Without them:
+
+```
+mkdir -p ~/.config/opencode/skills ~/.config/opencode/commands
+cp -r skills/* ~/.config/opencode/skills/
+cp -r commands/* ~/.config/opencode/commands/
+```
 
 ## Use
 
@@ -175,29 +203,29 @@ install separately; install whichever you use.
 
 ## Update
 
-With copies, pull and copy again:
+With copies, pull and run the install script again, with the same options as
+before. It replaces each of the twelve installed skills and twelve commands:
 
 ```
 git pull
-cp -r skills/* ~/.config/opencode/skills/
-cp -r commands/* ~/.config/opencode/commands/
+./install.sh
 ```
 
-With links, `git pull` is enough.
+With links, `git pull` is enough. Run the script again only when a pull
+brings a new skill or command, which needs its own link.
 
 ## Remove
 
 ```
-cd ~/.config/opencode
-rm -r skills/new-project skills/resume-project skills/save-project \
-   skills/list-projects skills/describe-project skills/status-projects \
-   skills/rename-project skills/archive-project skills/unarchive-project \
-   skills/merge-project skills/split-project skills/delete-project
-rm commands/new-project.md commands/resume-project.md commands/save-project.md \
-   commands/list-projects.md commands/describe-project.md commands/status-projects.md \
-   commands/rename-project.md commands/archive-project.md commands/unarchive-project.md \
-   commands/merge-project.md commands/split-project.md commands/delete-project.md
+./install.sh --uninstall
 ```
+
+```
+powershell -ExecutionPolicy Bypass -File install.ps1 -Uninstall
+```
+
+Add `--project` (`-Project`) with the project's directory for a
+one-project install.
 
 This removes the skills and commands only. `PROJECTS.md` and `Projects/` in
 your projects are yours and are left alone.
