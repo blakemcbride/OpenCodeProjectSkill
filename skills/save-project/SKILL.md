@@ -88,7 +88,9 @@ Next: the single next step
    entry or note and ask whether this session's work is that same project
    (then update that entry and note) or a new one (then choose a name that
    neither matches nor is contained in an existing one, and tell them the
-   name). Never overwrite an existing note that belongs to a different
+   name). If it is the same project and its note is under `archive/`, it
+   has to be brought back with `/unarchive-project <name>` before the save
+   goes on. Never overwrite an existing note that belongs to a different
    project.
 
 4. **Write down what a fresh session cannot rediscover from the code**, in

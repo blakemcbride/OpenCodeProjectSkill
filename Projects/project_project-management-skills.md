@@ -1,16 +1,18 @@
 # Project management skills
 
-Six OpenCode skills that keep the state of each project in plain files:
+Twelve OpenCode skills that keep the state of each project in plain files:
 `new-project`, `resume-project`, `save-project`, `list-projects`,
-`describe-project`, `delete-project`. Each has a matching command so it can be
-run as `/save-project` and the like. This repository is their one source and
-also keeps this record of the work on them.
+`describe-project`, `status-projects`, `rename-project`, `archive-project`,
+`unarchive-project`, `merge-project`, `split-project`, `delete-project`.
+Each has a matching command so it can be run as `/save-project` and the like.
+This repository is their one source and also keeps this record of the work
+on them.
 
 ## Where everything is
 
 - This repository (branch `master`, public on GitHub as
   `blakemcbride/OpenCodeProjectSkill`, MIT).
-  - `skills/<name>/SKILL.md` — the six skills.
+  - `skills/<name>/SKILL.md` — the twelve skills.
   - `commands/<name>.md` — one command per skill, for `/name`.
   - `ProjectSkills.md` — full documentation of every step.
   - `README.md` — public introduction, install, use, update, remove.
@@ -42,6 +44,23 @@ also keeps this record of the work on them.
   lossy compaction instead of Claude Code's purged, detailed sessions.
 - The saved state and its location are deliberately identical to the Claude
   Code version, so the two share one state per project.
+
+## Later Claude Code additions, ported
+
+- On 2026-11-22 the six skills added to the Claude Code version were ported
+  unchanged in logic: `status-projects`, `rename-project`, `archive-project`,
+  `unarchive-project`, `merge-project` and `split-project`, each with a
+  command here. The six earlier skills also took the Claude Code changes
+  that affect them: the archive awareness in `resume-project`, `save-project`,
+  `list-projects` and `delete-project`, and the archive alternative offered
+  by `delete-project`.
+- The same harness substitutions apply as in the first conversion, so the
+  skills still say `AGENTS.md` where the Claude Code version says
+  `MEMORY.md`, use the OpenCode install paths, and use `/new` or a new
+  `opencode` for a fresh session.
+- Archived projects keep their entry, word for word, inside the note under
+  `## Archived PROJECTS.md entry`, so the state stays in the same place and
+  format the Claude Code version reads and writes.
 
 ## Decisions the owner made, and why
 
@@ -101,6 +120,9 @@ also keeps this record of the work on them.
 - **The saved state is shared with the Claude Code version.** A project's
   `PROJECTS.md` and `Projects/` are the same files either harness uses, so the
   two versions stay interchangeable on one project.
+- **The OpenCode version tracks the Claude Code version.** Every enhancement
+  or addition to the Claude Code skills is ported here in the same task, so
+  the two stay equivalent apart from harness wording and install paths.
 - **This project's own record lives here**, not in another project, because
   the skills are not specific to any one project. It is written for a public
   repository: no person's name, no home directory path, no other project's
@@ -120,8 +142,8 @@ also keeps this record of the work on them.
   fresh one.
 - The skills are instructions, not code: a change is tested by running the
   skill, not by a build.
-- The install is discovered: `opencode api get /api/skill` lists all six ids
-  and `opencode api get /api/command` lists all six commands. The
+- The install is discovered: `opencode api get /api/skill` lists all twelve
+  ids and `opencode api get /api/command` lists all twelve commands. The
   `~/.config/opencode/` copy of a skill takes precedence over the identical
   id in `~/.claude/skills`.
 - A command template does not expand `@`-mentions, so a command cannot load a

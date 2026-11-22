@@ -62,8 +62,11 @@ that is not fresh, give that same "start a fresh session first" answer.
      only after they confirm; if it is new work, say so and start normally.
    - Several: list them and ask which.
    - None, or no `PROJECTS.md`: look for a matching `project_*.md` note in
-     `Projects/`, including any `Projects/archive/` sub-directory. Say what
-     was found. If it is new work, say so and start normally.
+     `Projects/`, including any `Projects/archive/` sub-directory, and for a
+     matching line in `AGENTS.md`. Say what was found. If the note is under
+     `Projects/archive/`, the project is archived: say so, say that
+     `/unarchive-project <name>` brings it back, and stop. If it is new
+     work, say so and start normally.
 
    An entry with nothing outstanding is resumed like any other. A project is
    never finished: report that nothing is outstanding and take up whatever

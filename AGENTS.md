@@ -1,9 +1,10 @@
 # Working in this repository
 
-This repository is the one source of six OpenCode skills (`new-project`,
+This repository is the one source of twelve OpenCode skills (`new-project`,
 `resume-project`, `save-project`, `list-projects`, `describe-project`,
-`delete-project`), their commands, and their documentation. It is public on
-GitHub.
+`status-projects`, `rename-project`, `archive-project`, `unarchive-project`,
+`merge-project`, `split-project`, `delete-project`), their commands, and
+their documentation. It is public on GitHub.
 
 ## Layout
 
@@ -32,12 +33,23 @@ GitHub.
   same place and format, as the Claude Code version of these skills, so a
   project saved under one harness is resumed under the other. Keep it that
   way.
+- **Sync every Claude Code change.** When the Claude Code version
+  (`blakemcbride/ClaudeCodeProjectSkill`) gains a skill or changes one, port
+  it here in the same task: update the skill and its command, add the
+  command for a new skill, update `ProjectSkills.md` and `README.md`, link
+  any new skill and command into `~/.config/opencode/`, and say what was
+  ported and what is left. Keep the harness substitutions: `AGENTS.md` for
+  `MEMORY.md`, the OpenCode install paths, `/new` and `opencode` for a fresh
+  session, the `edit` tool, and the README's opening about OpenCode's
+  sessions. Port behavior and wording; do not copy Claude-specific details.
 - **Public wording.** The skills, `ProjectSkills.md` and `README.md` say "the
   user", never a person's name. They hold no home directory path and nothing
   specific to one project.
 - **A project is never finished.** No skill marks a project as done or
   closed, and none deletes a project's entry or note except
   `delete-project`, on an explicit request and after confirmation.
+  `archive-project` moves them and loses nothing; `merge-project` removes
+  them only after their content is in the other project, after confirmation.
 - **The skills only write records.** They change no application code and
   never commit, push, deploy or restart anything.
 - **Test by running.** The skills are instructions, not code. A change is

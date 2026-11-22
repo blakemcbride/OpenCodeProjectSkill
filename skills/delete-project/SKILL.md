@@ -46,10 +46,11 @@ file, plan or document. It does not need a fresh session.
 
 4. **Ask the user to confirm**, in one question, saying it cannot be undone.
    The name in the command is not the confirmation; the yes must come after
-   step 3. If `Projects/` has an `archive/` sub-directory and the
-   note is not already in it, offer moving the note there as the
-   alternative to deleting it. Anything other than a clear yes: change
-   nothing and stop.
+   step 3. If the note is not already under `Projects/archive/`, offer
+   `/archive-project <name>` as the alternative to deleting it: that sets
+   the project aside and loses nothing. If the user chooses it, follow the
+   `archive-project` skill instead and delete nothing. Anything other than a
+   clear yes: change nothing and stop.
 
 5. **Delete**, only what step 3 showed:
    - Remove the entry from `PROJECTS.md` with the edit tool, leaving one
@@ -62,6 +63,5 @@ file, plan or document. It does not need a fresh session.
    - Leave other files that mention the note alone, and list them in the
      report so the user can decide.
 
-6. **Report**, briefly: the entry removed, the note deleted (or moved to
-   `archive/`), any `AGENTS.md` line removed, and any references left
-   behind.
+6. **Report**, briefly: the entry removed, the note deleted, any `AGENTS.md`
+   line removed, and any references left behind.

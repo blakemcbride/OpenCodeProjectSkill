@@ -13,7 +13,7 @@ That is useful, but it has three problems:
    OpenCode's own data directory, not in your project, so they may not be
    backed up with it.
 
-These six skills manage what they call *projects*. A project does
+These twelve skills manage what they call *projects*. A project does
 essentially what session save and resume does, without those three
 shortcomings:
 
@@ -51,6 +51,12 @@ words.
 | `/new-project <name>` | Alias for `/resume-project`. |
 | `/list-projects [words]` | Lists the names of the recorded projects. Changes nothing. |
 | `/describe-project <name>` | Shows the detail of one project from its saved state. Changes nothing. |
+| `/status-projects [words]` | Shows one line per project: its name, its next step and how many items are outstanding. Changes nothing. |
+| `/rename-project <name> to <new name>` | Renames a project and fixes the references to it. |
+| `/archive-project <name>` | Sets a project aside without deleting it. Its saved state moves to `Projects/archive/`. |
+| `/unarchive-project [name]` | Brings an archived project back. With no name it lists the archived projects. |
+| `/merge-project <name> into <other>` | Folds one project into another, after showing the plan and asking for confirmation. |
+| `/split-project <name> [into <new name>]` | Makes two projects of one, after showing the plan and asking for confirmation. |
 | `/delete-project <name>` | Deletes a project's saved state, after showing what will go and asking for confirmation. |
 
 OpenCode also loads a skill when you ask in plain words, for example "save
@@ -73,12 +79,14 @@ Both are ordinary Markdown files that you can read and edit yourself. They
 are kept in your project, not in OpenCode's own data directory, so nothing
 OpenCode stores or clears can remove them.
 
-Three rules run through all six skills:
+Three rules run through all twelve skills:
 
 - **A project is never finished.** More corrections and enhancements are
   always possible, so no skill marks a project as done or closed.
 - **Nothing is deleted automatically.** Only `/delete-project` removes a
-  project, and only after you confirm.
+  project, and only after you confirm. `/archive-project` sets one aside
+  and loses nothing, and `/merge-project` moves a project's whole content
+  into another before removing it, after you confirm.
 - **The skills only write records.** They change no application code and
   never commit, push, deploy or restart anything.
 
@@ -99,8 +107,8 @@ git clone https://github.com/blakemcbride/OpenCodeProjectSkill.git
 cd OpenCodeProjectSkill
 ```
 
-Then put the six skill directories and the six commands where OpenCode looks
-for them.
+Then put the twelve skill directories and the twelve commands where OpenCode
+looks for them.
 
 For every project on your machine:
 
@@ -121,8 +129,8 @@ cp -r commands/* /path/to/your/project/.opencode/commands/
 Start OpenCode. Type `/` to list the commands, and `/list-projects` is a
 harmless first test: in a project with no `PROJECTS.md` it says so and stops.
 
-Install all six skills and all six commands. They refer to each other by
-name.
+Install all twelve skills and all twelve commands. They refer to each other
+by name.
 
 ### Installing with links instead of copies
 
@@ -181,8 +189,14 @@ With links, `git pull` is enough.
 
 ```
 cd ~/.config/opencode
-rm -r skills/{new,resume,save,list,describe,delete}-project
-rm commands/{new,resume,save,list,describe,delete}-project.md
+rm -r skills/new-project skills/resume-project skills/save-project \
+   skills/list-projects skills/describe-project skills/status-projects \
+   skills/rename-project skills/archive-project skills/unarchive-project \
+   skills/merge-project skills/split-project skills/delete-project
+rm commands/new-project.md commands/resume-project.md commands/save-project.md \
+   commands/list-projects.md commands/describe-project.md commands/status-projects.md \
+   commands/rename-project.md commands/archive-project.md commands/unarchive-project.md \
+   commands/merge-project.md commands/split-project.md commands/delete-project.md
 ```
 
 This removes the skills and commands only. `PROJECTS.md` and `Projects/` in
