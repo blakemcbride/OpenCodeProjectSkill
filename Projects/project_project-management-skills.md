@@ -8,8 +8,8 @@ also keeps this record of the work on them.
 
 ## Where everything is
 
-- This repository (branch `master`; the owner is making a public GitHub
-  repository for it, MIT).
+- This repository (branch `master`, public on GitHub as
+  `blakemcbride/OpenCodeProjectSkill`, MIT).
   - `skills/<name>/SKILL.md` — the six skills.
   - `commands/<name>.md` — one command per skill, for `/name`.
   - `ProjectSkills.md` — full documentation of every step.

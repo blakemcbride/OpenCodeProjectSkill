@@ -6,7 +6,7 @@ nothing outstanding it stays, with `Next: Nothing outstanding.` Detail for
 each entry is in the named note under `Projects/`.
 
 **Project management skills** — `project_project-management-skills.md`
-Where: the OpenCode skills, commands, documentation and README are ready to commit on master and push to the new public GitHub repository blakemcbride/OpenCodeProjectSkill (this directory is not a git repository yet); on the owner's machine the skills and commands are linked into `~/.config/opencode/`; the latest save of this record (`PROJECTS.md`, `Projects/`) is uncommitted until the owner asks for a commit
+Where: the OpenCode skills, commands, documentation and README are committed on master and pushed to the public GitHub repository blakemcbride/OpenCodeProjectSkill; on the owner's machine the skills and commands are linked into `~/.config/opencode/`; the latest save of this record (`PROJECTS.md`, `Projects/`) is uncommitted until the owner asks for a commit
 Next: Run `/list-projects` in a fresh session as the first test; OpenCode already lists all six skills and six commands.
 
 - [ ] Owner: run `/list-projects`, then the other five, in a fresh OpenCode session; the six skills and six commands are installed and discovered, but none has been run yet.
