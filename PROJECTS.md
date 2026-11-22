@@ -6,10 +6,9 @@ nothing outstanding it stays, with `Next: Nothing outstanding.` Detail for
 each entry is in the named note under `Projects/`.
 
 **Project management skills** — `project_project-management-skills.md`
-Where: the twelve skills, commands, documentation and README are committed on master and pushed to the public GitHub repository blakemcbride/OpenCodeProjectSkill (20c58a3); the install scripts and their documentation changes are uncommitted; on the owner's machine the skills and commands are linked into `~/.config/opencode/`
+Where: the twelve skills, commands, documentation, README and install scripts are committed on master and pushed to the public GitHub repository blakemcbride/OpenCodeProjectSkill (7eb9be4); on the owner's machine the skills and commands are linked into `~/.config/opencode/`
 Next: Owner: try `/list-projects` in a fresh OpenCode session as the first test; all twelve skills and twelve commands are installed and discovered, and `/status-projects` has been run once, read-only.
 
-- [ ] Owner: commit and push `install.sh`, `install.ps1` and their documentation changes on master when ready; the port is complete and `install.sh` is tested.
 - [ ] Owner: try `/rename-project`, `/archive-project`, `/unarchive-project`, `/merge-project` and `/split-project`; they were added on 2026-11-22 and none has been run.
 - [ ] Owner: run `/list-projects`, then the other eleven, in a fresh OpenCode session; the twelve skills and twelve commands are installed and discovered, but apart from one read-only `/status-projects` none has been run yet.
 - [ ] Owner: try `/resume-project <name>` and `/new-project <name>` in a fresh OpenCode session; neither has been run since the fresh-session check, the loose-match question, the status-only exemption and the archived-project handling were added.
